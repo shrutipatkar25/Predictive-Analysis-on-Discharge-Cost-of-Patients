@@ -13,3 +13,4 @@ The complete project can be summarized in following steps.
 6. Providing conclusion
 
 I have also written a article on the entire process of Predictive Analysis. The link to the article is given below:
+https://medium.com/@shrutipatkar76/predictive-analysis-on-discharge-cost-of-patients-in-r-35f8af03f944
