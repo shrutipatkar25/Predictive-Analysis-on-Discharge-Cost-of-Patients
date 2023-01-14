@@ -1,7 +1,8 @@
 # Predictive-Analysis-on-Discharge-Cost-of-Patients in R
 In this project, I have used multiple regression analysis to predict the discharge cost of patients based on Age, Gender and Length of Stay.
 I have used the publicaly available dataset from Kaggle. The link to the dataset is given below:
-https://www.kaggle.com/datasets/ravichaubey1506/healthcare-cost.
+https://www.kaggle.com/datasets/ravichaubey1506/healthcare-cost
+
 The complete project can be summarized in following steps.
 
 1. Import the Dataset in R
