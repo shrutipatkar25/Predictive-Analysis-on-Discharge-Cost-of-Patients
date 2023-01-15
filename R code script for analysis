@@ -1,0 +1,48 @@
+## Predictive Analysis on discharge cost ##
+
+# Step 1: Import dataset
+library(readr)
+discharge_cost <- read_csv("discharge cost.csv")
+View(discharge_cost)
+
+#Step 2: Understand dataset and variables
+ # to understand structure of data points
+str(discharge_cost)
+ # to view summary of the data points
+summary(discharge_cost) 
+ # to view no of male & female patients
+table_gender<- table(discharge_cost$GENDER) 
+table_gender
+
+#Step 3: Performing linear regression
+ # performing linear regression on the data variables
+ # TOTCHG is discharge cost which is predictor variable
+ # Age, Gender, LOS are response variable
+model1 <- lm(TOTCHG ~ AGE + GENDER + LOS, data = discharge_cost)
+summary(model1)
+
+#Step 4: Using our model for prediction
+ # predicting the discharge cost using the model
+predict(model1)
+ # predicting discharge cost by giving specific input values
+predict(model1, tibble(AGE = 17, GENDER = 'Male', LOS = 7))
+ # comparing predicted values with real values
+predicted_values<- data_frame(predict(model1))
+ # adding predicted value column to the dataset
+discharge_cost$predicted <- predicted_values
+
+#Step 5: Understanding the reason behind the variation in cost
+ # installing packages for visualization
+install.packages("ggplot2")
+library(ggplot2)
+ # creating visualizations
+ggplot(data = discharge_cost,aes(x = AGE, y = TOTCHG, col = GENDER)) +
+  geom_point()
+ggplot(data = discharge_cost,aes(x = LOS, y = TOTCHG, z = AGE, col = GENDER)) +
+  geom_point()
+hist(discharge_cost$AGE)
+hist(discharge_cost$LOS)
+hist(discharge_cost$TOTCHG)
+
+``Conclusion: We can only predict 43% of variation in discharge cost with the given response variables as the data points are not linearly distributes``
+``To predict discharge cost more effectively we need to look for other parameters``
